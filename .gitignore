@@ -40,3 +40,4 @@ target/
 release.properties
 pom.xml.*
 -
+/web/.jqwik-database
