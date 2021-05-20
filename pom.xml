@@ -118,7 +118,7 @@
         <mockito.version>3.7.0</mockito.version>
         <gmaven.version>1.12.0</gmaven.version>
         <groovy.version>3.0.7</groovy.version>
-        <junit.version>5.6.2</junit.version>
+        <junit.version>5.7.2</junit.version>
         <junit.server.jetty.version>0.11.0</junit.server.jetty.version>
         <hibernate.version>5.4.3.Final</hibernate.version>
         <taglibs.standard.version>1.2.5</taglibs.standard.version>
@@ -862,6 +862,36 @@
                 <groupId>org.apache.shiro.integrationtests</groupId>
                 <artifactId>shiro-its-support</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro.integrationtests</groupId>
+                <artifactId>shiro-its-meecrowave-support</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro.integrationtests.jaxrs</groupId>
+                <artifactId>shiro-its-jaxrs</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro.integrationtests.jaxrs</groupId>
+                <artifactId>shiro-its-jaxrs-app</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro.integrationtests.jaxrs</groupId>
+                <artifactId>shiro-its-jaxrs-app</artifactId>
+                <version>${project.version}</version>
+                <classifier>classes</classifier>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro.integrationtests.jaxrs</groupId>
+                <artifactId>shiro-its-jaxrs-tests</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
             </dependency>
 
             <!-- 3rd party dependencies -->
