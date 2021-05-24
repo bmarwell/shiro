@@ -99,6 +99,12 @@
             <groupId>org.apache.shiro.integrationtests</groupId>
             <artifactId>shiro-its-support</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -112,6 +118,19 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>
@@ -195,27 +214,17 @@
                 </plugins>
             </build>
         </profile>
-        <!-- Currently the test fails with JDK11, so exclude it -->
         <profile>
-            <id>jdk19-plus</id>
+            <id>jdk16</id>
             <activation>
-                <jdk>[9,)</jdk>
+                <jdk>[16,)</jdk>
             </activation>
-            <build>
-                <plugins>
-                   <plugin>
-                       <groupId>org.apache.maven.plugins</groupId>
-                       <artifactId>maven-failsafe-plugin</artifactId>
-                       <configuration>
-                           <excludes>
-                               <exclude>**/ContainerIntegrationIT.*</exclude>
-                           </excludes>
-                       </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <!-- needed by guice until it is compatible with jdk16+. -->
+                <surefire.argLine>--illegal-access=permit</surefire.argLine>
+                <failsafe.argLine>--illegal-access=permit</failsafe.argLine>
+            </properties>
         </profile>
-
     </profiles>
 
 </project>
